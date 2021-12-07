@@ -1,23 +1,25 @@
 #In[]
 import numpy as np
-fishies = np.loadtxt("input6.txt", int, delimiter=',')
-fish_dick = {0:}
+def InitialiseFish():
+    fishies = np.loadtxt("input6.txt", int, delimiter=',')
+    fish_dick = {0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0}
+    for fish in fishies:
+        fish_dick[fish] = fish_dick[fish] + 1
 
 def Cycle(initial_fishies, days):
-    next_gen = initial_fishies
+    next_gen = {}
     if days == 0:
-        return next_gen
+        return initial_fishies
     else:
-        for fish in range(0, len(initial_fishies)):
-            if initial_fishies[fish] == 0:
-                next_gen[fish] = 6
-                next_gen = np.append(next_gen, 8)
-            else:
-                next_gen[fish] = next_gen[fish] - 1
+        for x in range(0, 8):
+            next_gen[x] = initial_fishies[x+1]
+        next_gen[6] = next_gen[6] + initial_fishies[0]
+        next_gen[8] = initial_fishies[0]
         return Cycle(next_gen, days - 1)
-
-#print("After 80 days, there would be", len(Cycle(fishies, 80))," lanternfish")
-fishies = np.loadtxt("input6.txt", int, delimiter=',')
-print("After 256 days, there would be", len(Cycle(fishies, 256))," lanternfish")
+        
+InitialiseFish()
+print("After 80 days, there would be", sum(Cycle(fish_dick, 80).values()), " lanterfish")
+InitialiseFish()
+print("After 256 days, there would be", sum(Cycle(fish_dick, 256).values())," lanternfish")
 
 # %%
