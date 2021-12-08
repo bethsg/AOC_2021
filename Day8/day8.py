@@ -51,5 +51,3 @@ for entry in signals.values:
             running_total += '8'
     running_running_total += int(running_total)
 print("Solution to part 2: ", running_running_total)
-
-# %%
