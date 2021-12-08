@@ -1,7 +1,5 @@
 #In[0]
-from numpy import sign
 import pandas as pd
-from pandas.io.pytables import AppendableFrameTable
 signals = pd.read_table("input8.txt", sep=' \\| | ', header=None, engine='python')
 #In[1]
 check_values = [2, 3, 4, 7]
@@ -51,3 +49,5 @@ for entry in signals.values:
             running_total += '8'
     running_running_total += int(running_total)
 print("Solution to part 2: ", running_running_total)
+
+# %%
