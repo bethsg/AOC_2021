@@ -1,7 +1,7 @@
 #In[0]
 from queue import PriorityQueue
 import numpy as np
-map = np.loadtxt("input15.txt", str)
+map = np.loadtxt("Day15/input15.txt", str)
 length = len(map)
 
 #In[1]
@@ -70,6 +70,7 @@ def Part_2():
                                 g2.add_edge(((a*5000)+(y*500) + (100*b) + x), ((a*5000)+(i*500)+(100*b)+x), int(map[i][j])+a+b)
     return g2
 #In[]
-print(dijkstra(Part_2(), 0)[249999])
+G2 = dijkstra(Part_2(), 0)
+print(G2[249999])
 
 # %%
